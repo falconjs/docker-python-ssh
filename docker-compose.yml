@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    server:
+        build:
+            context: ./docker
+            args:
+                SSH_MASTER_USER: ${SSH_MASTER_USER}
+                SSH_MASTER_PASS: ${SSH_MASTER_PASS}
+        hostname: server_py39
+        command: /bin/bash
+        stdin_open: true
+        tty: true
+        volumes:
+          - ~/MyCodeRep/Archaeopteryx:/Data
+        ports:
+            - "8022:22"
